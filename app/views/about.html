@@ -2,6 +2,30 @@
 
 <!-- a simple example for bothway data bind. -->
 <input type="text" ng-model="name" />
-<p>Hello,{{ name }}</p>
+<!-- 大小写过滤器 -->
+<p>Hello,{{ name | uppercase }}</p>
+<p>Hello,{{ name | lowercase }}</p>
+
+<!-- currecy过滤器可以将一个数值格式化为货币格式 -->
+<p>Hello,{{ name | currency }}</p>
+<!-- 日期格式 -->
+<p>{{ date | date:'medium' }}</p>
+<p>{{ date | date:'short' }}</p>
+<p>{{ date | date:'fullDate' }}</p>
+<p>{{ date | date:'longDate' }}</p>
+<p>{{ date | date:'mediumDate' }}</p>
+<p>{{ date | date:'shortDate' }}</p>
+<p>{{ date | date:'mediumTime' }}</p>
+<p>{{ date | date:'shortTime' }}</p>
+
+<!-- 自定义日期格式 -->
+<p>{{ date | date:'MMMd, y' }}</p> <!-- Aug9, 2013 -->
+<p>{{ date | date:'EEEE, d, M' }}</p> <!-- Thursday, 9, 8-->
+<p>{{ date | date:'hh:mm:ss.sss' }}</p> <!-- 12:09:02.995 -->
+<p>{{ date | date:'yyyy-mm-dd,hh:mm:ss' }}</p> <!-- 2016-20-14,07:20:00 -->
+
+<p>{{ num | filter: findLuckNum}}</p>
+<p>{{ num | fromFrewToMuch}}</p>
+
 
 <div>I want be {{ adj.presonality }}</div>
