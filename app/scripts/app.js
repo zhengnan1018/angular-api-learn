@@ -31,6 +31,11 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/eventBind', {
+        templateUrl: 'views/eventBind.html',
+        controller: 'EventBindCtrl',
+        controllerAs: 'eventBind'
+      })
       .otherwise({
         redirectTo: '/'
       });

@@ -8,10 +8,19 @@
  * Controller of the learnAngularApp
  */
 angular.module('learnAngularApp')
-  .controller('AboutCtrl', function () {
+  .controller('AboutCtrl', function ($scope) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-  });
+    getAdj($scope)
+  }
+);
+
+function getAdj($scope) {
+  $scope.adj = {
+    presonality: 'strong'
+  };
+  console.log($scope);
+}
