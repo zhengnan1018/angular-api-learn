@@ -36,6 +36,11 @@ angular
         controller: 'EventBindCtrl',
         controllerAs: 'eventBind'
       })
+      .when('/form_example', {
+        templateUrl: 'views/form_example.html',
+        controller: 'formExampleCtrl',
+        controllerAs: 'form_example'
+      })
       .otherwise({
         redirectTo: '/'
       });
