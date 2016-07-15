@@ -36,8 +36,4 @@ function getAdj($scope) {
   $scope.findLuckNum = function(num) {
     return num % 3 === 0
   }
-  // $scope.fromFrewToMuch = function(num) {
-  //   // console.log(num);
-  //
-  // }
 }
