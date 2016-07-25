@@ -56,3 +56,19 @@
     </div>
   </div>
 </form>
+
+<hr>
+
+<form class="" name="formUseMessage">
+  <div class="row">
+    <div class="form-group col-md-12">
+      <label for="name">Your name</label>
+      <input class="form-control" type="text" name="name" value="" id="name"
+        required ng-minlength='3' ng-maxlength="20" ng-model="user.name"
+        placeholder="name">
+      <div class="error" ng-messages="formUseMessage.name.$error">
+        <!-- <div ng-messages-include="/#/form_example/error_msg"></div> -->
+      </div>
+    </div>
+  </div>
+</form>

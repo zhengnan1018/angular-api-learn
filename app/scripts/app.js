@@ -41,6 +41,11 @@ angular
         controller: 'formExampleCtrl',
         controllerAs: 'form_example'
       })
+      // .when('/form_example/error_msg', {
+      //   templateUrl: 'views/templates/errorMsg.html',
+      //   controller: 'formExampleCtrl',
+      //   controllerAs: 'form_example'
+      // })
       .otherwise({
         redirectTo: '/'
       });

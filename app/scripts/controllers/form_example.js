@@ -44,10 +44,11 @@ angular.module('learnAngularApp')
     $scope.signupForm = function() {
       $scope.signup_form.submitted = true
       console.log($scope);
-    }
+    };
+    // $scope.errorMsgDir =
   })
   // ensure-unique directive
-  .directive('ensureUnique', function($http) {
+  .directive('ensureUnique', function() {
     return {
       require: 'ngModel',
       link: function(scope, ele, attrs, c) {

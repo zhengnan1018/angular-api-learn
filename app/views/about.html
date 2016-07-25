@@ -27,5 +27,37 @@
 <p>{{ num | filter: findLuckNum}}</p>
 <p>{{ num | fromFrewToMuch}}</p>
 
+<div happy my-link-url="http://www.google.com" some-context="linkContext" ></div>
+<input type="text" ng-model="linkContext" />
 
-<div>I want be {{ adj.presonality }}</div>
+<label>someProperty = {{someProperty}}</label>
+     <input type="checkbox"
+            ng-checked="someProperty"
+            ng-init="someProperty = false"
+            ng-model="someProperty">
+
+<!-- ng-selected default: false -->
+ <label>Select Two Fish:</label>
+     <input type="checkbox"
+            ng-model="isTwoFish"><br/>
+     <select>
+       <option>One Fish</option>
+       <option ng-selected="isTwoFish">Two Fish</option>
+       <option>Three Fish</option>
+     </select>
+
+<div>I want be {{ adj.presonality }} </div>
+
+<!-- ng-href, ng-src 都能有效帮助重构和避免错误,因此在改进代码时强烈建议用它们代替原 来的href和src属性 -->
+<img ng-src="{{ googleLogo }}" />
+<div ng-controller="childController" >
+  <p>
+    {{ innerText }}
+  </p>
+</div>
+<input type="text" ng-model="person.name">
+<div ng-switch on="person.name">
+  <p ng-switch-default>And the winner is</p>
+  <h1 ng-switch-when="liupeng">{{person.name}}</h1>
+  <h1 ng-switch-when="zhengnan">is strong!</h1>
+</div>

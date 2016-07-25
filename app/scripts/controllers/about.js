@@ -25,11 +25,30 @@ angular.module('learnAngularApp')
     })
   }
 })
+.directive('happy', function() {
+  return {
+    restrict: 'AE',
+    scope: {
+      myLinkUrl: '@', //@绑定策略
+      myLinkText: '=someContext'
+    },
+    templateUrl: '../../views/templates/testTpl.html'
+  }
+})
+.run(function($rootScope, $timeout) {
+  $timeout(function() {
+    $rootScope.googleLogo = 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png'
+  }, 2000)
+})
+.controller('childController', function($scope) {
+  $scope.innerText = 'I am inner Text'
+})
 
 function getAdj($scope) {
   $scope.adj = {
     presonality: 'strong',
   };
+  $scope.linkText = 'Go to Google'
   $scope.date = new Date(),
   console.log($scope);
   $scope.num = [23, 21, 43, 69, 55, 28, 12];
