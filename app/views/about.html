@@ -61,3 +61,38 @@
   <h1 ng-switch-when="liupeng">{{person.name}}</h1>
   <h1 ng-switch-when="zhengnan">is strong!</h1>
 </div>
+
+<div ng-if="2+2===5">
+  Won't see the dom node, not even in the source code.
+</div>
+<div ng-if="2+2===4">
+  Hi, I do exist.
+</div>
+<ul>
+  <li ng-repeat="person in people" ng-class="{even: !$even, odd: !$odd}">
+    {{ person.name }} live in {{ person.city }} .
+  </li>
+</ul>
+<div ng-init="greeting='HelloWorld'">
+  <p ng-bind="greeting"></p>
+</div>
+<div class="">
+  <input type="text" ng-model="equation.x" ng-change="change()"/>
+  <code>{{ equation.output }}</code>
+</div>
+<form name="signUp_form" ng-submit="submitForm()" novalidate>
+  <div ng-repeat="field in fields" class="form-group" ng-form="signup_form_input">
+    <input type="text" name="dynamic_input" class="form-control"
+      ng-required="field.isRequired"
+      ng-model="field.name"
+      placeholder="{{ field.placeholder }}" />
+      <div ng-show="signup_form_input.$invalid">
+        <span class="error" ng-show="signup_form_input.dynamic_input.$error.required">
+          The field is required.
+        </span>
+      </div>
+  </div>
+  <button type="submit" class="btn btn-default" ng-disabled="signUp_form.$invalid">
+    Submit All
+  </button>
+</form>

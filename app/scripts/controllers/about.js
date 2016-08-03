@@ -14,7 +14,22 @@ angular.module('learnAngularApp')
       'AngularJS',
       'Karma'
     ];
-    getAdj($scope)
+    getAdj($scope);
+    $scope.people = [
+      {name: 'Ari', city: 'Beijing'},
+      {name: 'Jessy', city: 'Shanghai'},
+      {name: 'Hongcan', city: 'Shanghai'},
+      {name: 'Kate', city: 'Nanjing'}
+    ];
+    $scope.equation = {}
+    $scope.change = function() {
+      $scope.equation.output = parseInt($scope.equation.x) + 2
+    };
+    $scope.fields = [
+      {placeholder: 'Username', isRequired: true},
+      {placeholder: 'Password', isRequired: true},
+      {placeholder: 'Email (optional)', isRequired: false}
+    ]
   }
 )
 // 自定义过滤器
