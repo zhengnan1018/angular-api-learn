@@ -29,7 +29,30 @@ angular.module('learnAngularApp')
       {placeholder: 'Username', isRequired: true},
       {placeholder: 'Password', isRequired: true},
       {placeholder: 'Email (optional)', isRequired: false}
-    ]
+    ];
+    $scope.decrement = function() {
+      $scope.count -- ;
+    };
+    $scope.cities = [
+      {name: 'Shanghai'},
+      {name: 'Nanjing'},
+      {name: 'Suzhou'},
+      {name: 'New York'},
+      {name: 'Chicago'}
+    ];
+    $scope.student = {
+      name: null
+    };
+    $scope.students = [];
+    $scope.submitEg = function() {
+      if ($scope.student.name) {
+        $scope.students.push({name: $scope.student.name});
+        $scope.student = "";
+      }
+    };
+    $scope.generateNumber = function() {
+      return $scope.x = Math.floor(Math.random() * 10 + 1)
+    };
   }
 )
 // 自定义过滤器
@@ -50,6 +73,51 @@ angular.module('learnAngularApp')
     templateUrl: '../../views/templates/testTpl.html'
   }
 })
+.directive('myScopedriective', function() {
+  return {
+    restrict: 'AE',
+    // 创建隔离作用域
+    scope: {
+      myProperty: '@',
+    },
+    template: 'Inside myScopedriective: {{ myProperty }}'
+  }
+})
+.directive('sideBox', function() {
+  return {
+    restrict: 'AE',
+    scope: {
+      title: '@'
+    },
+    transclude: true,
+    template: '<div class="sideBox">'
+            + '<div class="content">'
+            + '<h2 class="header">{{ title }}</h2>'
+            + '<span ng-transclude class="content"></span>'
+            + '</div>'
+            + '</div>',
+
+  }
+})
+.directive('linking', function() {
+  return {
+    restrict: 'AE',
+    transclude: true,
+    controller: function ($scope, $element, $transclude, $log) {
+      $transclude(function(clone) {
+        console.log(clone);
+        var a = angular.element('<a>');
+        a.attr('href', "www.aaa.com");
+        a.text(clone.text());
+        $log.info('Created new a tag in link directive');
+        $element.append(a);
+        var b = angular.element('<div>');
+        b.text("abc");
+        $element.append(b);
+      })
+    }
+  }
+})
 .run(function($rootScope, $timeout) {
   $timeout(function() {
     $rootScope.googleLogo = 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png'
@@ -64,10 +132,10 @@ function getAdj($scope) {
     presonality: 'strong',
   };
   $scope.linkText = 'Go to Google'
-  $scope.date = new Date(),
+  $scope.date = new Date();
   console.log($scope);
   $scope.num = [23, 21, 43, 69, 55, 28, 12];
   $scope.findLuckNum = function(num) {
-    return num % 3 === 0
+    return num % 3 === 0;
   }
 }

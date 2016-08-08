@@ -95,4 +95,42 @@
   <button type="submit" class="btn btn-default" ng-disabled="signUp_form.$invalid">
     Submit All
   </button>
+  <button class="btn btn-default" ng-click="count=count+1" ng-init="count=0">Increment count: {{ count }}</button>
+  <button class="btn btn-default" ng-click="decrement()" ng-init="count=0">Decrement</button>
+  <select class="form-control" ng-model="city" ng-options="city.name for city in cities">
+    <option value="">Choose City</option>
+  </select>
+  Best City: {{ city.name }}
 </form>
+<form ng-submit="submitEg()">
+  Enter text and hit enter.
+  <input class="form-control" type="text" name="student.name" ng-model="student.name" />
+  <input class="btn btn-default" type="submit" name="student.name" value="Submit" />
+  <code>people={{ student }}</code>
+  <ul ng-repeat="(index, object) in students">
+    <li>{{ object.name }}</li>
+  </ul>
+</form>
+<div ng-class="{red: x>5}" ng-if="x>5">
+  You won!
+</div>
+<button class="btn btn-primary" ng-init="x=0" ng-click="generateNumber()">Draw Number</button>
+<p>
+  Number is : {{ x }} .
+</p>
+<p>
+  Outside myScopedriective: {{ myProperty }} .
+</p>
+<div my-scopedriective my-property="happy girl!" ng-init="myProperty='Wow, this is cool!'">
+  Inside myScopedriective: {{ myProperty }} .
+</div>
+<div side-box title="Links">
+  <ul>
+    <li>First link</li>
+    <li>Second link</li>
+  </ul>
+</div>
+<div linking class="">
+  <a class="test-class" href="http://www.google.com">xxxx</a>
+  <span>aaa</span>
+</div>

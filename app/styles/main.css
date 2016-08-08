@@ -98,4 +98,7 @@ body {
   input .ng-valid {
     border: 1px solid green;
   }
+  .red {
+    background-color: red;
+  }
 }
