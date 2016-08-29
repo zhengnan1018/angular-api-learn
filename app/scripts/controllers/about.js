@@ -8,7 +8,7 @@
  * Controller of the learnAngularApp
  */
 angular.module('learnAngularApp')
-  .controller('AboutCtrl', function ($scope) {
+  .controller('AboutCtrl', function ($scope, greeter) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -53,13 +53,23 @@ angular.module('learnAngularApp')
     $scope.generateNumber = function() {
       return $scope.x = Math.floor(Math.random() * 10 + 1)
     };
+    $scope.sayHello = function() {
+      greeter.greet($scope.info);
+    }
+    $scope.renderTimer = function() {
+      return '22'
+      // console.log(333);
+      // console.log(GithubService.getTime());
+      // return GithubService.getTime()
+    }
+    // $scope.renderTimer = 'test'
   }
 )
 // 自定义过滤器
 .filter('fromFrewToMuch', function() {
   return function(input) {
     return input.sort((a, b) => {
-      return a >= b ? 1 : -1
+      return a >= b ? 1 : -1;
     })
   }
 })
@@ -118,9 +128,42 @@ angular.module('learnAngularApp')
     }
   }
 })
+.directive('testDir', function() {
+  return {
+    restrict: 'AE',
+    controller: function($scope) {
+      console.log(this);
+      console.log($scope);
+      this.fun1 = function() {
+        console.log(22);
+      }
+    }
+  }
+})
+.directive('innerTestdir', function() {
+  return {
+    restrict: 'AE',
+    require: '^testDir',
+    scope: {},
+    link: function(scope, ele, attr, testDirCtrl) {
+      // console.log(testDirCtrl.fun1);
+      testDirCtrl.fun1();
+    }
+  }
+})
+.directive('test-ngmodel', function() {
+  return {
+    require: '?ngModel',
+    link: function(scope, ele, attr, ngModelCtrl) {
+      if (!ngModelCtrl) return;
+
+    }
+  }
+})
 .run(function($rootScope, $timeout) {
   $timeout(function() {
     $rootScope.googleLogo = 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png'
+    // $scope.renderTimer = 
   }, 2000)
 })
 .controller('childController', function($scope) {
